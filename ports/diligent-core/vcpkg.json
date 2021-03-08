@@ -1,0 +1,7 @@
+{
+  "name": "diligent-core",
+  "version-string": "v2.5-beta",
+  "homepage": "https://github.com/DiligentGraphics/DiligentCore",
+  "description": "This module implements Diligent Engine's core functionality: Direct3D11, Direct3D12, OpenGL, OpenGLES, and Vulkan rendering backends as well as basic platform-specific utilities.",
+  "dependencies": ["glew"]
+}
