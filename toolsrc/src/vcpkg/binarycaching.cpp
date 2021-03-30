@@ -668,9 +668,15 @@ namespace
 #ifndef _WIN32
                     cmd.path_arg(paths.get_tool_exe(Tools::MONO));
 #endif
+                    // see https://devblogs.microsoft.com/cppblog/vcpkg-accelerate-your-team-development-environment-with-binary-caching-and-manifests/#comment-1403
+                    // -ApiKey AzureDevOps fixes pushes to nuget feed
                     cmd.path_arg(nuget_exe)
                         .string_arg("push")
                         .path_arg(nupkg_path)
+                        .string_arg("-ApiKey")
+                        .string_arg("AzureDevOps")
+                        .string_arg("-Timeout")
+                        .string_arg("900")
                         .string_arg("-ForceEnglishOutput")
                         .string_arg("-Source")
                         .string_arg(write_src);
