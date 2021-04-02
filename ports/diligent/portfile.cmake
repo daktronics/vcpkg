@@ -136,9 +136,9 @@ diligent_extract_to(${DILIGENT_SAMPLES} ${diligent_source_path}/DiligentSamples)
 
 # --- diligent-tools
 vcpkg_download_distfile(DILIGENT_TOOLS
-    URLS "https://github.com/daktronics/DiligentTools/archive/044f3b78ce0ef8c83878d696e3fb94bcb14f3da6.zip"
-    FILENAME "diligent_tools-044f3b7.zip"
-    SHA512 1a239bbdb1f9f88264c4b4666b7d8cb4b4e227444fe2030e1ee013eb8e0aed17ff94a50fb4bd3bbcc8363b5553c15aac1442a8817e73bae857b0893829aa93d7
+    URLS "https://github.com/daktronics/DiligentTools/archive/7d877b00581f788a33ceae5d20d3f3ad73180263.zip"
+    FILENAME "diligent_tools-7d877b0.zip"
+    SHA512 ebe2f75a77f3e7ac1456df79177e8a54f417f7c841464bfc8983e894c2068978081a484b7017fd7272fc7fa8ac9252fcf92f88d085209b7979a4335aff17af13
 )
 diligent_extract_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools)
 
@@ -175,6 +175,7 @@ vcpkg_configure_cmake(
         -DDILIGENT_BUILD_SAMPLES=0
         -DDILIGENT_BUILD_DEMOS=0
         -DENABLE_GLSLANG_INSTALL=1
+        #-DDILIGENT_DEBUG=0
         #-DENGINE_DLL=1
 )
 
