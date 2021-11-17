@@ -37,9 +37,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO daktronics/DiligentEngine
-    REF 07a483ac94fe4884de6f389a53d32bc7dcda002d
-    SHA512 2ff716f367b58ca13860a1cae62fc700ed45ed8a022e9147ac16e9ad766199935b2c9af2cf4a2ca7b079a81684fe61fc8ce4b30e1ce7db3bc6c7247e68c6e434
-    HEAD_REF vcpkg_patch
+    REF 1b285a3977e635183691080c51fbeda42aaa96e3
+    SHA512 85fde3d2b00df00b7f6de49a292ba9a944c1801c561a1aab74a6ee8c4b5cfac4a6bb425355432f94b48547819b8670f18e3fffd9b013e2d3c1a416d3ea20a444
+    HEAD_REF camino
 )
 
 set(diligent_source_path ${SOURCE_PATH})
@@ -53,92 +53,102 @@ function(diligent_extract_to archive_path destination_path)
     file(RENAME ${source_path} ${destination_path})
 endfunction()
 
+function(diligent_extract_with_patch_to archive_path destination_path patch_path)
+    file(REMOVE_RECURSE ${destination_path})
+    vcpkg_extract_source_archive_ex(
+        OUT_SOURCE_PATH source_path
+        ARCHIVE ${archive_path}
+        PATCHES ${patch_path}
+    )
+    file(RENAME ${source_path} ${destination_path})
+endfunction()
+
 # --- diligent-core
 vcpkg_download_distfile(DILIGENT_CORE
-    URLS "https://github.com/daktronics/DiligentCore/archive/55c5c1b54b7cc4007563d64f647aead16520b5d3.zip"
-    FILENAME "diligent_core-55c5c1b.zip"
-    SHA512 984a18225641a2fc9ddd1a0dd0ffaa81c4514349c5aecfe8a9adb98a746e7c7873207d411436b74a9edda129484f63c3c1e9ea17cdcafb33610a3acbafc0ae5d
+    URLS "https://github.com/daktronics/DiligentCore/archive/b84491f893e70f0085ad14988850b910bcca47ce.zip"
+    FILENAME "diligent_core-b84491f.zip"
+    SHA512 ed329442dc7894e520d16c6c75fdae45a168bb565c1cec9a4a1492cc6f695d69c914b527e0d1b7689fe2e3a69d5a59383d8501c177a0ac68c5351f559953ad2e
 )
 diligent_extract_to(${DILIGENT_CORE} ${diligent_source_path}/DiligentCore)
 
 # --- glslang
 vcpkg_download_distfile(GLSLANG
-    URLS "https://github.com/daktronics/glslang/archive/4ef8b72fc264829bea869818396fc664192cbad5.zip"
-    FILENAME "glslang-4ef8b72.zip"
-    SHA512  b36382d0df21b1661a22c7ce2da68c4c9f6fccf72caa454d0020dc2ab7bd9adb6e01cd35c2a5ccce73f9afa08fe5bc1b9ed005e90c3dc37c26485f338ee2a21d
+    URLS "https://github.com/daktronics/glslang/archive/49985573c6ee43365d2923ae38d080e4e9b60102.zip"
+    FILENAME "glslang-4998557.zip"
+    SHA512  a93c7dd7cd13d55ca4f2ae95e7f63b5db4d5f236f41a44ad8471255e546c47894afa70abfb662d90effb2d5d2c5c09f94348693ed5160b9b84dbd94678df4ce4
 )
 diligent_extract_to(${GLSLANG} ${diligent_source_path}/DiligentCore/ThirdParty/glslang)
 
 # --- googletest
 vcpkg_download_distfile(GOOGLETEST
-    URLS "https://github.com/DiligentGraphics/googletest/archive/f3ef7e173fd0853069f16c4b5afc7e80a350604b.zip"
-    FILENAME "googletest-f3ef7e1.zip"
-    SHA512 a0f0411b0784fc6e2b68449c90a50cf65eeccbdbdcfb1ebbbbede2608a0b2a1a10738797c814a3fa5020eb9bcbcc811662e8a75d9c6a71021aa07e3092c5d2f1
+    URLS "https://github.com/DiligentGraphics/googletest/archive/075810f7a20405ea09a93f68847d6e963212fa62.zip"
+    FILENAME "googletest-075810f.zip"
+    SHA512 b7d4bfacf1ad4935b3cda495f561c8a8b77a18c7410ed5765122b6196c9fb43befbfc29d5b750701db89569f581534bdabbae85fb427d107ee9a632be0421bab
 )
 diligent_extract_to(${GOOGLETEST} ${diligent_source_path}/DiligentCore/ThirdParty/googletest)
 
 # --- spirv-cross
 vcpkg_download_distfile(SPIRV_CROSS
-    URLS "https://github.com/DiligentGraphics/SPIRV-Cross/archive/b27bff01b9041a1f3e673252eaa55ee075515676.zip"
-    FILENAME "SPIRV_Cross-b27bff0.zip"
-    SHA512 9b0786971abe1385d914b3b6cad22327988fe6b18c281d5b580124af12be6e1d9257e2be40dcb111678991e74c44ccbe638f19e84aa01df0865ad82b7c4456e1
+    URLS "https://github.com/DiligentGraphics/SPIRV-Cross/archive/f61a33c8f4bbea37ac6fb3c1710288127dbc7e15.zip"
+    FILENAME "SPIRV_Cross-f61a33c.zip"
+    SHA512 d822d513a85176bf752c639be12a125e4b7cece00a07e961006f05945c76b4f49051531124f4ca4a8960cc064ee13977104d800a2b9058f4655049dc3fd26aba
 )
 diligent_extract_to(${SPIRV_CROSS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Cross)
 
 # --- spirv headers
 vcpkg_download_distfile(SPIRV_HEADERS
-    URLS "https://github.com/DiligentGraphics/SPIRV-Headers/archive/faa570afbc91ac73d594d787486bcf8f2df1ace0.zip"
-    FILENAME "SPIRV_Cross-faa570a.zip"
-    SHA512 540a1a4f2f7379353c823074ab2001c572d402cadbd5e8d3c28c38de6d112a4766adb0540d68e9115f61d8dece54562ad3a0b54e89b31e35f85d21c24797b2a5
+    URLS "https://github.com/DiligentGraphics/SPIRV-Headers/archive/5ea2d62e8c0ddd9e2a7d0ca5e3f2335e09e5f408.zip"
+    FILENAME "SPIRV_Cross-5ea2d62.zip"
+    SHA512 0f7c579389f4cb12e8b0a3c0f60cdf0e88372ac8819d3efac42f961bac4dea5bc51b3eb26bd7f82f09b49fd2ff1f0bdc9df1b24aa48ce5188891f64223b96bed
 )
 diligent_extract_to(${SPIRV_HEADERS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Headers)
 
 # --- spirv tools
 vcpkg_download_distfile(SPIRV_TOOLS
-    URLS "https://github.com/DiligentGraphics/SPIRV-Tools/archive/6bf25d8ff9692565dcd85b0fff39025bc4ba98e6.zip"
-    FILENAME "SPIRV_Tools-6bf25d8.zip"
-    SHA512 81ee862f5cb0e3f2ceb432bcd31275be8e7377f20c70856ac1f9f1605352e6a07c023d522c3ca7a6fb1fa33d21a4eab18d505ad3bc7cc8dca00559b291a435f2
+    URLS "https://github.com/DiligentGraphics/SPIRV-Tools/archive/7308083707a4bffb62bcfbc721851033e5534bb7.zip"
+    FILENAME "SPIRV_Tools-7308083-c.zip"
+    SHA512 33e2a38959138d3630c254d67b785853538f8673923ea094bbd023a9272bf76efc98da94c5a03a1a8c59105b9c3fa8ab636084638f898714b281ba27d94d1e0d
 )
 
 diligent_extract_to(${SPIRV_TOOLS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Tools)
 
 # --- vulkan headers
 vcpkg_download_distfile(VULKAN_HEADERS
-    URLS "https://github.com/DiligentGraphics/Vulkan-Headers/archive/ec2db85225ab410bc6829251bef6c578aaed5868.zip"
-    FILENAME "Vulkan_Headers-ec2db85.zip"
-    SHA512 fb771b18203bf33cfc06550b411737ee34f3d7fee73b35815d647ffd1b29a77eee02daf2553cf59dbfb19dadee57ab09cc1fc0f306a0a46ca91d8c723afe6c61
+    URLS "https://github.com/DiligentGraphics/Vulkan-Headers/archive/fa27a13cf74080df2ad421a788299db1276f17a7.zip"
+    FILENAME "Vulkan_Headers-fa27a13.zip"
+    SHA512 b79bd70ddeac852e4e89bf4d736152d14338692549d87224d9ba494ff4108c5937fcfd9a1339cc7ca602f3e20e122bcbe82b5e2733b41f51e842501984f7e3b9
 )
 diligent_extract_to(${VULKAN_HEADERS} ${diligent_source_path}/DiligentCore/ThirdParty/Vulkan-Headers)
 
 # --- volk
 vcpkg_download_distfile(VOLK
-    URLS "https://github.com/DiligentGraphics/volk/archive/d9281176c7f1883ac9622b58821fdbe79342f2db.zip"
-    FILENAME "volk-d928117.zip"
-    SHA512 b4c0671c18f953d0d23b1bce1d909af7f9d5d7c38d3ae585278b59634eb9d5f4111fe22b5e89906ad88716db167a5fabc925c13de57070326c3f6c9d53d5cb19
+    URLS "https://github.com/DiligentGraphics/volk/archive/760a782f295a66de7391d6ed573d65e3fb1c8450.zip"
+    FILENAME "volk-760a782.zip"
+    SHA512 440bac52377b01c0c4a6adc5ee169e43fd85a9ed0470e0963567e15f1221820fbb78adf4cbfff00fb2c691807feeb3bab0e15ba7a0ed5437dc7c8ef594a56d54
 )
 diligent_extract_to(${VOLK} ${diligent_source_path}/DiligentCore/ThirdParty/VOLK)
 
 # --- diligent-fx
 vcpkg_download_distfile(DILIGENT_FX
-    URLS "https://github.com/daktronics/DiligentFX/archive/8a6e680658a1091a5d82f52bc0bb2dd909543da6.zip"
-    FILENAME "diligent_fx-8a6e680.zip"
-    SHA512 801dbc18dbdde1f95f969eae9cf4bf1633be2b7c9dc8da56b1a14ae5d76501137bc851e2bc3567a31991d401e3f715722768692fdaca33e8f9e17530380d362c
+    URLS "https://github.com/daktronics/DiligentFX/archive/1addf2e91ff2077cd18d026ea39899deeaa2acbd.zip"
+    FILENAME "diligent_fx-1addf2e.zip"
+    SHA512 895aaa006b8b61a32d038dce78b7adc553b5d97ceb75346a45da310f5fda182e4099013ab76e922cc21c3861ef9446731aed17f4f380e4d7d6b7a236855cdb6f
 )
 diligent_extract_to(${DILIGENT_FX} ${diligent_source_path}/DiligentFX)
 
 # --- diligent-samples
 vcpkg_download_distfile(DILIGENT_SAMPLES
-    URLS "https://github.com/daktronics/DiligentSamples/archive/f19131365694930bcc269f4230b92723c31a6954.zip"
-    FILENAME "diligent_samples-f191313.zip"
-    SHA512 c536702f03915ffbee11b862ab28a311034ba1e6df9298049569400821202cf9914936531528db2f6090e9eee1c4e0475805ec556eb50dd025bfd69038e3a310
+    URLS "https://github.com/daktronics/DiligentSamples/archive/4e4a268a31619bd782beefc63b20923430fdb617.zip"
+    FILENAME "diligent_samples-4e4a268.zip"
+    SHA512 2fd217cdb253862584568fbd0b5c1f206a7692f7f9fe829b9cc4ad403da1970de56614a575af04445f24845c16e3e7e7f7e862a9b6c1c0ad7e2f17f2f7767cc0
 )
 diligent_extract_to(${DILIGENT_SAMPLES} ${diligent_source_path}/DiligentSamples)
 
 # --- diligent-tools
 vcpkg_download_distfile(DILIGENT_TOOLS
-    URLS "https://github.com/daktronics/DiligentTools/archive/7d877b00581f788a33ceae5d20d3f3ad73180263.zip"
-    FILENAME "diligent_tools-7d877b0.zip"
-    SHA512 ebe2f75a77f3e7ac1456df79177e8a54f417f7c841464bfc8983e894c2068978081a484b7017fd7272fc7fa8ac9252fcf92f88d085209b7979a4335aff17af13
+    URLS "https://github.com/daktronics/DiligentTools/archive/3a0f52736c8344830ba6fc630386378f5bd974ad.zip"
+    FILENAME "diligent_tools-3a0f527.zip"
+    SHA512 bc0bd5c894873c9a9ca541e3a4e11c13fb1d898d6f4c84daec0731e19a63abd0297cba8e979c75a2cde13af4b58485d6decdc0adc66149ea16d9ac4f5802e10d
 )
 diligent_extract_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools)
 
@@ -173,8 +183,11 @@ vcpkg_configure_cmake(
         -DDILIGENT_BUILD_FX=1
         -DDILIGENT_INSTALL_FX=1
         -DDILIGENT_BUILD_SAMPLES=0
-        -DDILIGENT_BUILD_DEMOS=0
         -DENABLE_GLSLANG_INSTALL=1
+        -DSKIP_GLSLANG_INSTALL=0
+        -DSKIP_SPIRV_TOOLS_INSTALL=0
+        -DSPIRV_CROSS_SKIP_INSTALL=0
+        -DSPIRV_TOOLS_BUILD_STATIC=1
         #-DDILIGENT_DEBUG=0
         #-DENGINE_DLL=1
 )
