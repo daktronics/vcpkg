@@ -109,8 +109,8 @@ vcpkg_download_distfile(SPIRV_TOOLS
     FILENAME "SPIRV_Tools-7308083-c.zip"
     SHA512 33e2a38959138d3630c254d67b785853538f8673923ea094bbd023a9272bf76efc98da94c5a03a1a8c59105b9c3fa8ab636084638f898714b281ba27d94d1e0d
 )
-
-diligent_extract_to(${SPIRV_TOOLS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Tools)
+diligent_extract_with_patch_to(${SPIRV_TOOLS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Tools "SPIRV-Tools-path-length.patch")
+#diligent_extract_to(${SPIRV_TOOLS} ${diligent_source_path}/DiligentCore/ThirdParty/SPIRV-Tools)
 
 # --- vulkan headers
 vcpkg_download_distfile(VULKAN_HEADERS
