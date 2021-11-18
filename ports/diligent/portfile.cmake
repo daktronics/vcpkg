@@ -65,9 +65,9 @@ endfunction()
 
 # --- diligent-core
 vcpkg_download_distfile(DILIGENT_CORE
-    URLS "https://github.com/daktronics/DiligentCore/archive/b84491f893e70f0085ad14988850b910bcca47ce.zip"
-    FILENAME "diligent_core-b84491f.zip"
-    SHA512 ed329442dc7894e520d16c6c75fdae45a168bb565c1cec9a4a1492cc6f695d69c914b527e0d1b7689fe2e3a69d5a59383d8501c177a0ac68c5351f559953ad2e
+    URLS "https://github.com/daktronics/DiligentCore/archive/ff057cf596854d9dce3e31a537afd69819e30758.zip"
+    FILENAME "diligent_core-ff057cf.zip"
+    SHA512 a736cef2a628633b7c691bd1f961d6f8a787d9d304ea6424b3ff247fcf0537a7b6e2cbad0b853459e371bf8f2c3aa51658bb188c975e61eec5a3dc1b89f3410f
 )
 diligent_extract_to(${DILIGENT_CORE} ${diligent_source_path}/DiligentCore)
 
