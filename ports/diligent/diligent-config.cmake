@@ -16,6 +16,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/SPIRVTargets.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/spirv_cross_core/spirv_cross_coreConfig.cmake")
 set(spirv_cross_core_DIR "${CMAKE_CURRENT_LIST_DIR}/spirv_cross_core")
 
+include("${CMAKE_CURRENT_LIST_DIR}/Diligent-PublicBuildSettings-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-BuildSettings-target.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-PrimitivesInterface-target.cmake")
