@@ -371,23 +371,23 @@ function(gn_desc_target_defines OUTPUT BUILD_DIR TARGET)
 endfunction()
 
 # skiaConfig.cmake.in input variables
-if(NOT DEFINED VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "debug")
-    gn_desc_target_libs(SKIA_DEP_DBG
-        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg"
-        //:skia)
-    gn_desc_target_defines(SKIA_DEFINITIONS_DBG
-        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg"
-        //extract_public_config:extract_skia)
-endif()
-
-if(NOT DEFINED VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "release")
-    gn_desc_target_libs(SKIA_DEP_REL
-        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel"
-        //:skia)
-    gn_desc_target_defines(SKIA_DEFINITIONS_REL
-        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel"
-        //extract_public_config:extract_skia)
-endif()
+#if(NOT DEFINED VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "debug")
+#    gn_desc_target_libs(SKIA_DEP_DBG
+#        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg"
+#        //:skia)
+#    gn_desc_target_defines(SKIA_DEFINITIONS_DBG
+#        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-dbg"
+#        //extract_public_config:extract_skia)
+#endif()
+#
+#if(NOT DEFINED VCPKG_BUILD_TYPE OR VCPKG_BUILD_TYPE STREQUAL "release")
+#    gn_desc_target_libs(SKIA_DEP_REL
+#        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel"
+#        //:skia)
+#    gn_desc_target_defines(SKIA_DEFINITIONS_REL
+#        "${CURRENT_BUILDTREES_DIR}/${TARGET_TRIPLET}-rel"
+#        //extract_public_config:extract_skia)
+#endif()
 
 configure_file("${CMAKE_CURRENT_LIST_DIR}/skiaConfig.cmake.in"
         "${CURRENT_PACKAGES_DIR}/share/skia/skiaConfig.cmake" @ONLY)
