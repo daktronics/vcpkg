@@ -3,8 +3,8 @@ vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO googleapis/google-cloud-cpp
-    REF v1.39.0
-    SHA512 d61ebcdb6680797f20147ee1d37b9d29c82e8c7267b944a346685bfa607cf0b7f1772854874b967f19b4f54ddcefc94a771a4686cafcd6a5fed426d64e553205
+    REF v2.0.1
+    SHA512 3e9315ac18d1c06b8d38ac20b389d858b83dbd6058bb697a9f4d7d0e35ae31d9d79856239380c78ea77714c576675ba361b59213d995ff5ce33f11c74647b715
     HEAD_REF main
     PATCHES
         support_absl_cxx17.patch
@@ -17,6 +17,18 @@ list(REMOVE_ITEM GOOGLE_CLOUD_CPP_ENABLE "core")
 # This feature does not exist, but allows us to simplify the vcpkg.json file.
 list(REMOVE_ITEM GOOGLE_CLOUD_CPP_ENABLE "grpc-common")
 list(REMOVE_ITEM GOOGLE_CLOUD_CPP_ENABLE "googleapis")
+# google-cloud-cpp uses dialogflow_cx and dialogflow_es. Underscores
+# are invalid in `vcpkg` features, we use dashes (`-`) as a separator
+# for the `vcpkg` feature name, and convert it here to something that
+# `google-cloud-cpp` would like.
+if ("dialogflow-cx" IN_LIST "${FEATURES}")
+    list(REMOVE_ITEM GOOGLE_CLOUD_CPP_ENABLE "dialogflow-cx")
+    list(APPEND GOOGLE_CLOUD_CPP_ENABLE "dialogflow_cx")
+endif ()
+if ("dialogflow-es" IN_LIST "${FEATURES}")
+    list(REMOVE_ITEM GOOGLE_CLOUD_CPP_ENABLE "dialogflow-es")
+    list(APPEND GOOGLE_CLOUD_CPP_ENABLE "dialogflow_es")
+endif ()
 
 vcpkg_cmake_configure(
     SOURCE_PATH ${SOURCE_PATH}
@@ -47,29 +59,12 @@ foreach(feature IN LISTS FEATURES)
 endforeach()
 # These packages are automatically installed depending on what features are
 # enabled.
-foreach(suffix common googleapis grpc_utils)
+foreach(suffix common googleapis grpc_utils rest_internal)
     set(config_path "lib/cmake/google_cloud_cpp_${suffix}")
     if(NOT IS_DIRECTORY "${CURRENT_PACKAGES_DIR}/${config_path}")
         continue()
     endif()
     vcpkg_cmake_config_fixup(PACKAGE_NAME "google_cloud_cpp_${suffix}"
-                             CONFIG_PATH "${config_path}"
-                             DO_NOT_DELETE_PARENT_CONFIG_PATH)
-endforeach()
-
-# These packages are only for backwards compability. The google-cloud-cpp team
-# is planning to remove them around 2022-02-15.
-foreach(package
-        googleapis
-        bigtable_client
-        pubsub_client
-        spanner_client
-        storage_client)
-    set(config_path "lib/cmake/${package}")
-    if(NOT IS_DIRECTORY "${CURRENT_PACKAGES_DIR}/${config_path}")
-        continue()
-    endif()
-    vcpkg_cmake_config_fixup(PACKAGE_NAME "${package}"
                              CONFIG_PATH "${config_path}"
                              DO_NOT_DELETE_PARENT_CONFIG_PATH)
 endforeach()
