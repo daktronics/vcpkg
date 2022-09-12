@@ -57,6 +57,7 @@ vcpkg_extract_source_archive_ex(
 )
 
 configure_file(${VCPKG_ROOT_DIR}/ports/${PORT}/CMakeLists.txt ${source_path}/CMakeLists.txt COPYONLY)
+configure_file(${VCPKG_ROOT_DIR}/ports/${PORT}/mpMatrix.h ${source_path}/parser/mpMatrix.h COPYONLY)
 #vcpkg_replace_string("${source_path}/CMakeLists.txt" "muparserx ${MUPARSERX_SOURCES}" "muparserx STATIC ${MUPARSERX_SOURCES}")
 
 # # Check if one or more features are a part of a package installation.
