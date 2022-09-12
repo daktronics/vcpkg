@@ -265,7 +265,7 @@ public:
 	{
 		using namespace std;
 
-		cout << szTitle << _T("\n");
+		cout << szTitle << "\n";
 		cout << "------------------\n";
 		cout << "Cols: " << GetCols() << "\n";
 		cout << "Rows: " << GetRows() << "\n";
