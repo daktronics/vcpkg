@@ -1,0 +1,17 @@
+diff --git a/source/CMakeLists.txt b/source/CMakeLists.txt
+index 898fcfd3..4303cc87 100644
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -136,9 +136,9 @@ macro(spvtools_extinst_lang_headers NAME GRAMMAR_FILE)
+       --extinst-output-path=${OUT_H}
+     DEPENDS ${LANG_HEADER_PROCESSING_SCRIPT} ${GRAMMAR_FILE}
+     COMMENT "Generate language specific header for ${NAME}.")
+-  add_custom_target(spirv-tools-header-${NAME} DEPENDS ${OUT_H})
+-  set_property(TARGET spirv-tools-header-${NAME} PROPERTY FOLDER "SPIRV-Tools build")
+-  list(APPEND EXTINST_CPP_DEPENDS spirv-tools-header-${NAME})
++  add_custom_target(sth-${NAME} DEPENDS ${OUT_H})
++  set_property(TARGET sth-${NAME} PROPERTY FOLDER "SPIRV-Tools build")
++  list(APPEND EXTINST_CPP_DEPENDS sth-${NAME})
+ endmacro(spvtools_extinst_lang_headers)
+ 
+ spvtools_core_tables("unified1")
