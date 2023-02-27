@@ -42,13 +42,14 @@ include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D12Interface-target.
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineOpenGLInterface-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D11Interface-target.cmake")
 
-include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsTools-target.cmake")
+#include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsTools-target.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineVk-shared-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D12-shared-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineOpenGL-shared-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D11-shared-target.cmake")
 
+include("${CMAKE_CURRENT_LIST_DIR}/Diligent-JSON-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-TextureLoader-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-AssetLoader-target.cmake")
 
