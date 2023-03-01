@@ -65,9 +65,9 @@ endfunction()
 
 # --- diligent-core
 vcpkg_download_distfile(DILIGENT_CORE
-    URLS "https://github.com/daktronics/DiligentCore/archive/6a5222842d6bc114d1434954b843459a1193dae0.zip"
-    FILENAME "diligent_core-6a52228.zip"
-    SHA512 d58a62ba2ba51a990bc701ca2f081303ecd7a5b7fac22e2ab537432506f0989173b92cae10454b74552596442b7ff9947d1609355b4f2edeba5e8319c873d124
+    URLS "https://github.com/daktronics/DiligentCore/archive/461fbd924403b52da2af36295391bed99fe5cefa.zip"
+    FILENAME "diligent_core-461fbd9.zip"
+    SHA512 d458da8a35f68d0232cc14dfe2be7bebdf4c4696e0f84f21b1787863d72925194841fa3a48b79e6fe3e3e2ae138c468c9364a6a0ea97cd8746da0df2c1fe6d9c
 )
 diligent_extract_to(${DILIGENT_CORE} ${diligent_source_path}/DiligentCore)
 
@@ -223,6 +223,8 @@ endfunction()
 
 file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/share/${PORT})
 diligent_move_to(${CURRENT_PACKAGES_DIR}/lib/cmake/*cmake ${CURRENT_PACKAGES_DIR}/share/${PORT})
+diligent_move_to(${CURRENT_PACKAGES_DIR}/lib/cmake/glslang/*cmake ${CURRENT_PACKAGES_DIR}/share/${PORT})
+diligent_move_to(${CURRENT_PACKAGES_DIR}/lib/cmake/xxHash/*cmake ${CURRENT_PACKAGES_DIR}/share/${PORT})
 vcpkg_fixup_cmake_targets(CONFIG_PATH lib/cmake/${PORT})
 file(MAKE_DIRECTORY ${CURRENT_PACKAGES_DIR}/share/${PORT}/spirv_cross_core)
 diligent_move_to(${CURRENT_PACKAGES_DIR}/share/spirv_cross_core/cmake/*cmake ${CURRENT_PACKAGES_DIR}/share/${PORT}/spirv_cross_core)

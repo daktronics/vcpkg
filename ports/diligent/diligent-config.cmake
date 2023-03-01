@@ -4,17 +4,24 @@ message(STATUS "CMAKE prefix path: ${CMAKE_PREFIX_PATH}")
 message(STATUS "CMAKE current list path: ${CMAKE_CURRENT_LIST_DIR}")
 message(STATUS "CMAKE module path: ${CMAKE_MODULE_PATH}")
 
-include("${CMAKE_CURRENT_LIST_DIR}/OSDependentTargets.cmake")
-include("${CMAKE_CURRENT_LIST_DIR}/OGLCompilerTargets.cmake")
-
-include("${CMAKE_CURRENT_LIST_DIR}/glslangTargets.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/SPIRV-ToolsConfig.cmake")
 set(SPIRV-Tools_DIR "${CMAKE_CURRENT_LIST_DIR}")
 include("${CMAKE_CURRENT_LIST_DIR}/SPIRV-Tools-optConfig.cmake")
-set(SPIRV-Tools-opt_DIR "${CMAKE_CURRENT_LIST_DIR}")
-include("${CMAKE_CURRENT_LIST_DIR}/SPIRVTargets.cmake")
+
+#include("${CMAKE_CURRENT_LIST_DIR}/OSDependentTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/glslang-targets.cmake")
+#include("${CMAKE_CURRENT_LIST_DIR}/OGLCompilerTargets.cmake")
+
+#include("${CMAKE_CURRENT_LIST_DIR}/SPIRV-ToolsConfig.cmake")
+#set(SPIRV-Tools_DIR "${CMAKE_CURRENT_LIST_DIR}")
+#include("${CMAKE_CURRENT_LIST_DIR}/SPIRV-Tools-optTargets.cmake")
+#set(SPIRV-Tools-opt_DIR "${CMAKE_CURRENT_LIST_DIR}")
+#include("${CMAKE_CURRENT_LIST_DIR}/SPIRVTargets.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/spirv_cross_core/spirv_cross_coreConfig.cmake")
-set(spirv_cross_core_DIR "${CMAKE_CURRENT_LIST_DIR}/spirv_cross_core")
+#set(spirv_cross_core_DIR "${CMAKE_CURRENT_LIST_DIR}/spirv_cross_core")
+
+include("${CMAKE_CURRENT_LIST_DIR}/Vulkan-Headers-target.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/xxHashConfig.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-PublicBuildSettings-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-BuildSettings-target.cmake")
@@ -29,6 +36,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/Diligent-Win32Platform-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-Common-target.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineInterface-target.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/Diligent-ArchiverInterface-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsAccessories-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngine-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-HLSL2GLSLConverterLib-target.cmake")
@@ -42,7 +50,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D12Interface-target.
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineOpenGLInterface-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D11Interface-target.cmake")
 
-#include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsTools-target.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsTools-target.cmake")
 
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineVk-shared-target.cmake")
 include("${CMAKE_CURRENT_LIST_DIR}/Diligent-GraphicsEngineD3D12-shared-target.cmake")
