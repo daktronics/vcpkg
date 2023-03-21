@@ -154,9 +154,9 @@ diligent_extract_to(${DILIGENT_SAMPLES} ${diligent_source_path}/DiligentSamples)
 
 # --- diligent-tools
 vcpkg_download_distfile(DILIGENT_TOOLS
-    URLS "https://github.com/daktronics/DiligentTools/archive/8eaca25fcf2ba2c7dffec26fec3bad38b8083737.zip"
-    FILENAME "diligent_tools-8eaca25.zip"
-    SHA512 8e28fcf300352a0009282a1ff515f9c63bc87c943b0c11f68da046c9156f3747e0f5b82d48fa2dd53a9b850a727227d8199044d073b2151b4a1511a880859180
+    URLS "https://github.com/daktronics/DiligentTools/archive/2be32eb840d52b504eddca385a8022682215e483.zip"
+    FILENAME "diligent_tools-2be32eb.zip"
+    SHA512 4b6c33a53265f8df7b85fe7b95cb99f8b2a8c45ba647c207a9b6b2ec592c3c21ab6cdb374c0fb37615d30969c3a1f521a2ce763cb5bca288c31505e6e7dbcfa5
 )
 diligent_extract_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools)
 
