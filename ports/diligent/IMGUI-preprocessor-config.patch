@@ -1,7 +1,7 @@
-diff --git a/CMakeLists.txt b/CMakeLists.txt
+diff --git a/Imgui/CMakeLists.txt b/Imgui/CMakeLists.txt
 index 8917c08..b0a1148 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+--- a/Imgui/CMakeLists.txt
++++ b/Imgui/CMakeLists.txt
 @@ -130,6 +130,10 @@ if(PLATFORM_WIN32 AND MINGW_BUILD)
      target_link_libraries(Diligent-Imgui PRIVATE dwmapi.lib)
  endif()

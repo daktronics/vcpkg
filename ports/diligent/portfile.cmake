@@ -158,7 +158,7 @@ vcpkg_download_distfile(DILIGENT_TOOLS
     FILENAME "diligent_tools-2be32eb.zip"
     SHA512 4b6c33a53265f8df7b85fe7b95cb99f8b2a8c45ba647c207a9b6b2ec592c3c21ab6cdb374c0fb37615d30969c3a1f521a2ce763cb5bca288c31505e6e7dbcfa5
 )
-diligent_extract_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools)
+diligent_extract_with_patch_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools "IMGUI-preprocessor-config.patch")
 
 # -- args
 vcpkg_download_distfile(ARGS
@@ -174,8 +174,8 @@ vcpkg_download_distfile(IMGUI
     FILENAME "imgui-66ad2ad.zip"
     SHA512 4102c4e4c58b6966171c9d693d2fac0487d393eea3668d13e6d55f23f1ff0845f3acf64708a6a30b777185ee92bc93c0f8c3c582c12b10cb8325436f7131079b
 )
-diligent_extract_with_patch_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui "IMGUI-preprocessor-config.patch")
-#diligent_extract_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui)
+#diligent_extract_with_patch_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui)
+diligent_extract_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui)
 
 # # Check if one or more features are a part of a package installation.
 # # See /docs/maintainers/vcpkg_check_features.md for more details
