@@ -174,7 +174,8 @@ vcpkg_download_distfile(IMGUI
     FILENAME "imgui-66ad2ad.zip"
     SHA512 4102c4e4c58b6966171c9d693d2fac0487d393eea3668d13e6d55f23f1ff0845f3acf64708a6a30b777185ee92bc93c0f8c3c582c12b10cb8325436f7131079b
 )
-diligent_extract_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui)
+diligent_extract_with_patch_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui "IMGUI-preprocessor-config.patch")
+#diligent_extract_to(${IMGUI} ${diligent_source_path}/DiligentTools/ThirdParty/imgui)
 
 # # Check if one or more features are a part of a package installation.
 # # See /docs/maintainers/vcpkg_check_features.md for more details

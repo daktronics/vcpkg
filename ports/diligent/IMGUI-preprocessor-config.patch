@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8917c08..b0a1148 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -130,6 +130,10 @@ if(PLATFORM_WIN32 AND MINGW_BUILD)
+     target_link_libraries(Diligent-Imgui PRIVATE dwmapi.lib)
+ endif()
+ 
++target_compile_definitions(Diligent-Imgui PRIVATE
++  IMGUI_USER_CONFIG="${CMAKE_SOURCE_DIR}/../../../../ports/diligent/VTXImguiConfig.hpp"
++)
++
+ source_group("src" FILES ${SOURCE})
+ source_group("include" FILES ${INCLUDE})
+ source_group("interface" FILES ${INTERFACE})
