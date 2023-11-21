@@ -1,7 +1,7 @@
 {
   "name": "diligent",
-  "version-string": "v2.5.3.daktronics",
-  "port-version": 5,
+  "version-string": "v2.5.4.daktronics",
+  "port-version": 1,
   "homepage": "https://github.com/DiligentGraphics/DiligentEngine",
   "description": "Diligent Engine is a lightweight cross-platform graphics API abstraction library and rendering framework. It is designed to take full advantage of Direct3D12, Vulkan and Metal, while supporting older platforms via Direct3D11, OpenGL and OpenGLES. Diligent Engine exposes common front-end API and uses HLSL as universal shading language on all platforms and rendering back-ends. Platform-specific shader representations (GLSL, DX bytecode or SPIRV) can be used with corresponding back-ends. The engine is intended to be used as graphics subsystem in a game engine or any other 3D application. It is distributed under Apache 2.0 license and is free to use.",
   "dependencies": [
