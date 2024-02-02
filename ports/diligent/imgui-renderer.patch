@@ -1,0 +1,15 @@
+diff --git forkSrcPrefix/Imgui/src/ImGuiDiligentRenderer.cpp forkDstPrefix/Imgui/src/ImGuiDiligentRenderer.cpp
+index 3348310b5384a511ce7cea118be0f18035183cd8..41c8abefbedd435aeae05257fa464f7fbd4e97d1 100644
+--- forkSrcPrefix/Imgui/src/ImGuiDiligentRenderer.cpp
++++ forkDstPrefix/Imgui/src/ImGuiDiligentRenderer.cpp
+@@ -583,8 +583,8 @@ void ImGuiDiligentRenderer::CreateDeviceObjects()
+     RT0.SrcBlend              = BLEND_FACTOR_ONE;
+     RT0.DestBlend             = BLEND_FACTOR_INV_SRC_ALPHA;
+     RT0.BlendOp               = BLEND_OPERATION_ADD;
+-    RT0.SrcBlendAlpha         = BLEND_FACTOR_INV_SRC_ALPHA;
+-    RT0.DestBlendAlpha        = BLEND_FACTOR_ZERO;
++    RT0.SrcBlendAlpha         = BLEND_FACTOR_ONE;
++    RT0.DestBlendAlpha        = BLEND_FACTOR_INV_SRC_ALPHA;
+     RT0.BlendOpAlpha          = BLEND_OPERATION_ADD;
+     RT0.RenderTargetWriteMask = COLOR_MASK_ALL;
+ 
