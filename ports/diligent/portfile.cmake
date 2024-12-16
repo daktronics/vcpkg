@@ -37,8 +37,8 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO daktronics/DiligentEngine
-    REF 50f6b3107ce10861bc3b2edc19e01abd0663a2ce
-    SHA512 977cf4a52aded7bbe5cbcbbf5926bcc4bacf4be6ce4447c024c0f97bf3a9d1e120a5dd7e1fb68aa33bc3cc817813bdd12a789d77eb4f94b520faeb8e9258765e
+    REF 404cfe0b3e9e93dbb8cd66f2779f7742cddfa608
+    SHA512 4f1eee76bff39ac61a8a35889d4ba5641c0a060ba339a7f4a6201e3a23e4244ee2ec6af3ae9798e3be6fa9f2e3c6c44df6f0cecb08e2664b6441d057c0d6252f
     HEAD_REF camino
 )
 
@@ -66,9 +66,9 @@ endfunction()
 
 # --- diligent-core
 vcpkg_download_distfile(DILIGENT_CORE
-    URLS "https://github.com/daktronics/DiligentCore/archive/d201544b4d972edff0ecd70d3797cfb058d9c50b.zip"
-    FILENAME "diligent_core-d201544.zip"
-    SHA512 349f60b949ef66f7b4a1d664789c6017ff75f61879185dd2fc644fbc89682a426f468c4b944a83d08a17ada1970d56767bf145ffbf8f441616da55a3d7a519e9
+    URLS "https://github.com/daktronics/DiligentCore/archive/90ccc1b87531a22fe14cadbac5e18f19966ea24d.zip"
+    FILENAME "diligent_core-90ccc1b.zip"
+    SHA512 23d8e3116e8faf343c8d903ec863a9eaed3a464da528b67bfe45eaa43e257185c6a42202beebfe81ae6c212d87f070795ce23b84e5b782240ed115da1c7aa09c
 )
 diligent_extract_to(${DILIGENT_CORE} ${diligent_source_path}/DiligentCore)
 
