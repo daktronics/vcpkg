@@ -59,6 +59,7 @@ function(diligent_extract_with_patch_to archive_path destination_path patch_path
         OUT_SOURCE_PATH source_path
         ARCHIVE ${archive_path}
         PATCHES ${patch_path}
+                ${ARGN}
     )
     file(RENAME ${source_path} ${destination_path})
 endfunction()
@@ -158,7 +159,7 @@ vcpkg_download_distfile(DILIGENT_TOOLS
     FILENAME "diligent_tools-41aed1f.zip"
     SHA512 1f006c3601e5b3fd53dd261d4c206e7f712cdb8795fda3eb104d407eaf03904705b6de657972201b0b0c1f3bed81bfd3e2293577ca58cf62e4b11529ed06d2d4
 )
-diligent_extract_with_patch_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools "IMGUI-preprocessor-config.patch")
+diligent_extract_with_patch_to(${DILIGENT_TOOLS} ${diligent_source_path}/DiligentTools "IMGUI-preprocessor-config.patch" "imgui-renderer.patch")
 
 # -- args
 vcpkg_download_distfile(ARGS
